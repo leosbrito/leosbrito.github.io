@@ -3,9 +3,17 @@
 <head>
   <title>Geolocalização</title>
   <script>
+
     function getLocation() {
+      
+      var options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      };
+
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition, handleError, options);
       } else {
         console.log("Geolocalização não é suportada pelo seu navegador.");
       }
@@ -23,6 +31,11 @@
       // Redirecionar para a página do mapa (opcional)
       window.location.href = mapLink;
     }
+    
+    function handleError(error) {
+      console.log("Erro ao obter a localização: " + error.message);
+    }
+    
   </script>
 </head>
 <body>
