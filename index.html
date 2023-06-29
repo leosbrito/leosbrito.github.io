@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Geolocalização</title>
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        console.log("Geolocalização não é suportada pelo seu navegador.");
+      }
+    }
+
+    function showPosition(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+
+      var mapLink = "https://www.google.com/maps?q=" + latitude + "," + longitude;
+      
+      // Exibir o link no console (opcional)
+      console.log("Link para a localização no mapa: " + mapLink);
+      
+      // Redirecionar para a página do mapa (opcional)
+      window.location.href = mapLink;
+    }
+  </script>
+</head>
+<body>
+  <button onclick="getLocation()">Obter Localização</button>
+</body>
+</html>
